@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CryptocurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CryptocurrencyController::class, 'index'])->name('index');
+Route::get('/top10', [CryptocurrencyController::class, 'top10List'])->name('top10');
+Route::get('/{id}', [CryptocurrencyController::class, 'edit'])->name('edit');
+Route::patch('/{id}', [CryptocurrencyController::class, 'updatePrice'])->name('update');
